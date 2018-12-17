@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+{% block body %}
+
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="/build/static/cool.svg" width="30" height="30" style="margin-right: 5px;" class="d-inline-block align-top" alt="">
+        Where do you wanna go next ...
+    </a>
+</nav>
+<br />
+<div class="container-fluid">
+
+    {% for row in data.polls|batch(3) %}
+        <div class="row">
+            {% for poll in row %}
+                <div class="col-sm d-flex">
+                    <div class="card" style="width: 100%; margin-bottom: 20px;">
+                        <div class="card-img-top card-bg-top">{{ poll.name|slice(0,1) }}</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h5 class="card-title">{{ poll.name }}</h5>
+                                </div>
+                                <div class="col-4">
+                                    <h5 id="votes-{{ poll.id }}" class="card-title" style="text-align: end;">{{ poll.votes }}</h5>
+                                </div>
+                            </div>
+                            <p class="card-text" style="text-align: justify;">{{ poll.description }}</p>
+                            <a href="#" class="btn btn-danger btn-vote" data-id="{{ poll.id }}" style="width: 100%;">Go There</a>
+                            <vote></vote>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}

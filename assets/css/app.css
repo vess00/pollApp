@@ -1,0 +1,14 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+body {
+    background-color: #ffffff;
+}
+.card-bg-top {
+    background-color: #0056b3;
+    height: 8rem;
+    line-height: 8rem;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #ffffff;
+}
